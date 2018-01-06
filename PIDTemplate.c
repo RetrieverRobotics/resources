@@ -54,7 +54,6 @@ void initPIDVars(){
 	//driveLPID.Kp = 0.36; 		// P
 	//driveLPID.Ki = 0.00040; // I
 	//driveLPID.Kd = 8; 			// D
-	//driveLPID.enabled = true;
 	//driveLPID.integralLimit = 50; // max power the integral will wind up to
 	//driveLPID.integralActiveZone = 127/driveLPID.Kp;
 	//driveLPID.loopTime = 50; // ms
@@ -66,7 +65,6 @@ void initPIDVars(){
 	//armPID.Kp = 0.1; 			// P
 	//armPID.Ki = 0.000060; // I
 	//armPID.Kd = 7; 				// D
-	//armPID.enabled = true;
 	//armPID.integralLimit = 50; // max power the integral will wind up to
 	//armPID.integralActiveZone = 127/armPID.Kp;
 	//armPID.loopTime = 50; // ms
