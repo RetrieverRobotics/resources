@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////////////////////
 //
-// PID Template for Retriever Robotics
+// PID Template for UMBC Retriever Robotics
 //
 /////////////////////////////////////////////////////////////////////
 
@@ -34,36 +34,15 @@ typedef struct PIDStruct{
 }PIDStruct;
 
 // example PID variables
-PIDStruct driveLPID;
-PIDStruct driveRPID;
-PIDStruct armPID;
-#define MAX_PID_VARS 3 // update this number to however many PID variables you have
-
-// array storing pointers to the PID variables for ease of access in PID functions
-//example
-PIDStruct *PIDVars[MAX_PID_VARS] = {&driveLPID, &driveRPID, &armPID};
+//PIDStruct driveLPID;
+//PIDStruct driveRPID;
+//PIDStruct armPID;
 
 //---------------------------------------------------------------
 // user functions
 //---------------------------------------------------------------
 
 void initPIDVars(){
-	//set everything to 0 initially
-	for(int i; i < MAX_PID_VARS; i++){
-		PIDVars[i]->debug = false;
-		PIDVars[i]->target = 0;
-		PIDVars[i]->previousError = 0;
-		PIDVars[i]->integral = 0;
-		PIDVars[i]->output = 0;
-		PIDVars[i]->input = 0;
-		PIDVars[i]->Kp = 0;
-		PIDVars[i]->Ki = 0;
-		PIDVars[i]->Kd = 0;
-		PIDVars[i]->integralLimit = 0;
-		PIDVars[i]->integralActiveZone = 0;
-		PIDVars[i]->loopTime = 0;
-	}
-
 	//---------------------------------------------------------------------------------------
 	//
 	// These are your tuning constants, add another section for each PID variable you have.
@@ -72,27 +51,29 @@ void initPIDVars(){
 	// Google PID tuning for more information on how to tune
 
 	//examples:
-	driveLPID.Kp = 0.36; 		// P
-	driveLPID.Ki = 0.00040; // I
-	driveLPID.Kd = 8; 			// D
-	driveLPID.integralLimit = 50; // max power the integral will wind up to
-	driveLPID.integralActiveZone = 127/driveLPID.Kp;
-	driveLPID.loopTime = 50; // ms
-	driveLPID.debug = false; // set to true to see the output of this PID variable's terms for tuning.
+	//driveLPID.Kp = 0.36; 		// P
+	//driveLPID.Ki = 0.00040; // I
+	//driveLPID.Kd = 8; 			// D
+	//driveLPID.enabled = true;
+	//driveLPID.integralLimit = 50; // max power the integral will wind up to
+	//driveLPID.integralActiveZone = 127/driveLPID.Kp;
+	//driveLPID.loopTime = 50; // ms
+	//driveLPID.debug = false; // set to true to see the output of this PID variable's terms for tuning.
 
-	driveRPID = driveLPID;
-	driveRPID.debug = false;
+	//driveRPID = driveLPID;
+	//driveRPID.debug = false;
 
-	armPID.Kp = 0.1; 			// P
-	armPID.Ki = 0.000060; // I
-	armPID.Kd = 7; 				// D
-	armPID.integralLimit = 50; // max power the integral will wind up to
-	armPID.integralActiveZone = 127/armPID.Kp;
-	armPID.loopTime = 50; // ms
-	armPID.debug = true; // set to true to see the output of this PID variable's terms for tuning.
+	//armPID.Kp = 0.1; 			// P
+	//armPID.Ki = 0.000060; // I
+	//armPID.Kd = 7; 				// D
+	//armPID.enabled = true;
+	//armPID.integralLimit = 50; // max power the integral will wind up to
+	//armPID.integralActiveZone = 127/armPID.Kp;
+	//armPID.loopTime = 50; // ms
+	//armPID.debug = true; // set to true to see the output of this PID variable's terms for tuning.
 }
 
-// The heavy lifter for PID tasks
+// The heavy lifter for PID tasks.
 void updatePIDVar(PIDStruct *PIDVar){
 	float proportional = 0;
 	float derivative = 0;
